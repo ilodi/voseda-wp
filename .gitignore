@@ -1,0 +1,67 @@
+# WordPress
+wp-admin/
+wp-includes/
+*.log
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backups/
+sitemap.xml
+sitemap.xml.gz
+
+# Theme development
+*.DS_Store
+Thumbs.db
+.sass-cache/
+node_modules/
+*.map
+*.orig
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# Build files
+dist/
+build/
+*.min.css
+*.min.js
+
+# Environment
+.env
+.env.local
+
+# Logs
+error.log
+access.log
+debug.log
+
+# Temporary files
+*.tmp
+*.temp
+~*
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Backup files
+*.bak
+*.backup
+*.sql
+*.zip
+*.tar.gz
+
+# Claude
+.claude/state/

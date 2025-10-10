@@ -1,0 +1,301 @@
+/**
+ * Voseda Footer Banner (Optimizado v3.1)
+ * Layout CSS Grid + efecto cristal opcional + delay de aparición + imagen hover
+ * by Voseda Dev / IMaaS Group
+ */
+
+/* ========================================
+   Banner Principal
+   ======================================== */
+
+.voseda-footer-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: clamp(420px, 50vw, 750px);
+    padding: 0.64em 1em;
+    box-sizing: border-box;
+    overflow: visible; /* Cambio a visible para permitir imagen flotante */
+    z-index: 9999;
+    border-radius: 22px 99px 99px 22px;
+
+    /* Fondo sólido por defecto (sin cristal) */
+    background-color: rgba(30, 30, 30, 0.95);
+
+    /* Sombra flotante */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),
+                0 2px 8px rgba(0, 0, 0, 0.15);
+
+    /* Transiciones suaves */
+    transition: border-radius 0.4s ease, transform 0.3s ease, opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Efecto hover sutil */
+.voseda-footer-banner:hover {
+    border-radius: 1.25rem;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   Imagen Flotante en Hover
+   ======================================== */
+
+.voseda-banner-hover-image {
+    position: absolute;
+    bottom: 100%; /* Posicionar justo arriba del banner */
+    left: 0;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 12px; /* Espacio entre imagen y banner */
+    border-radius: 1.25rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),
+                0 4px 12px rgba(0, 0, 0, 0.15);
+
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    /* Transición suave */
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+
+    /* Z-index para aparecer sobre todo */
+    z-index: 10000;
+}
+
+/* Placeholder gris cuando no hay imagen */
+.voseda-banner-hover-image.voseda-banner-no-image {
+    background-color: #e8e8e8;
+    background-image: none;
+}
+
+/* Mostrar imagen al hacer hover sobre el banner */
+.voseda-footer-banner:hover .voseda-banner-hover-image {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ========================================
+   Efecto Cristal (Glassmorphism) Opcional
+   ======================================== */
+
+.voseda-footer-banner.voseda-glass-effect {
+    /* Variables del efecto cristal - Diseño luminoso y minimalista */
+    --voseda-blur: blur(7.5px);
+    --voseda-bg: #e8e8e8cc;
+
+    background-color: var(--voseda-bg);
+    backdrop-filter: var(--voseda-blur) saturate(160%) brightness(1.05);
+    -webkit-backdrop-filter: var(--voseda-blur) saturate(160%) brightness(1.05);
+}
+
+/* Ajuste hover con efecto cristal */
+.voseda-footer-banner.voseda-glass-effect:hover {
+    --voseda-blur: blur(9px);
+}
+
+/* ========================================
+   Estados de Visibilidad (para delay)
+   ======================================== */
+
+.voseda-footer-banner.voseda-banner-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+}
+
+.voseda-footer-banner.voseda-banner-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    animation: voseda-banner-slide-up 0.6s ease-out;
+}
+
+/* ========================================
+   Layout CSS Grid (70% texto, 30% botón)
+   ======================================== */
+
+.voseda-banner-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    /* gap: clamp(18px, 3vw, 28px); */
+    align-items: center;
+    text-align: left;
+}
+
+/* Texto ocupa primera columna */
+.voseda-banner-text {
+    grid-column: 1;
+    font-size: 1em; /* 16px base */
+    font-weight: 400; /* Normal weight para diseño minimalista */
+    line-height: 1.5;
+    margin: 0;
+    color: rgb(26, 26, 26);
+    text-shadow: none;
+    text-align: left;
+}
+
+/* Botón CTA ocupa segunda columna */
+.voseda-banner-button-wrapper {
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.voseda-banner-button {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(11px, 1.6vw, 15px) clamp(18px, 2.2vw, 26px);
+    font-size: clamp(13px, 1.2vw, 16px);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: var(--voseda-gradient-button, linear-gradient(135deg, rgb(23, 152, 58) 0%, rgb(125, 184, 27) 100%));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.voseda-banner-button:hover {
+    background: var(--voseda-gradient-button-hover, linear-gradient(290deg, rgb(163, 189, 48) 0%, rgb(1, 144, 69) 100%));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.voseda-banner-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Accesibilidad
+   ======================================== */
+
+.voseda-banner-button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 3px;
+}
+
+/* Reducir movimiento para usuarios con preferencias */
+@media (prefers-reduced-motion: reduce) {
+    .voseda-footer-banner {
+        animation: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .voseda-banner-button {
+        transition: none;
+    }
+
+    .voseda-banner-button:hover {
+        transform: none;
+    }
+
+    .voseda-footer-banner.voseda-banner-visible {
+        animation: none;
+    }
+}
+
+/* ========================================
+   Animación de entrada
+   ======================================== */
+
+@keyframes voseda-banner-slide-up {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .voseda-footer-banner {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        max-width: calc(100% - 32px);
+        padding: clamp(16px, 3.5vw, 26px) clamp(18px, 3.5vw, 26px);
+    }
+
+    .voseda-banner-content {
+        grid-template-columns: 1fr;
+        gap: clamp(14px, 2.5vw, 18px);
+    }
+
+    .voseda-banner-text {
+        grid-column: 1;
+        font-size: 0.95em; /* Slightly smaller en tablets */
+    }
+
+    .voseda-banner-button-wrapper {
+        grid-column: 1;
+        justify-content: stretch;
+    }
+
+    .voseda-banner-button {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .voseda-footer-banner {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        max-width: calc(100% - 24px);
+        padding: 16px 20px;
+        border-radius: 0.875rem;
+    }
+
+    .voseda-banner-content {
+        gap: 14px;
+    }
+
+    .voseda-banner-text {
+        font-size: 0.9em; /* 14.4px en móviles */
+        line-height: 1.5;
+    }
+
+    .voseda-banner-button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   Overlay (removido - no necesario)
+   ======================================== */
+
+.voseda-banner-overlay {
+    display: none;
+}
+
+/* Wrapper inner (simplificado) */
+.voseda-banner-inner {
+    /* Ya no necesitamos este contenedor con Grid */
+    display: contents;
+}

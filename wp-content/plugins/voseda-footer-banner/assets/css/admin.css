@@ -1,0 +1,40 @@
+/**
+ * Estilos para el panel de administración
+ * Voseda Footer Banner
+ */
+
+/* ========================================
+   Página de Configuración
+   ======================================== */
+
+.voseda-footer-banner-settings .form-table th {
+    width: 200px;
+}
+
+.voseda-footer-banner-settings .form-table h2 {
+    margin: 20px 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.voseda-footer-banner-settings .form-table hr {
+    margin: 0 0 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* Preview de imagen */
+#voseda_fb_image_preview img {
+    margin-top: 10px;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Botones de imagen */
+#voseda_fb_upload_image,
+#voseda_fb_remove_image {
+    margin-right: 10px;
+}

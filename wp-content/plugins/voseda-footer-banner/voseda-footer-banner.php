@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Voseda Banner by IMaaS_Group
  * Plugin URI: https://voseda.com
- * Description: Plugin para inyectar un banner personalizable en el footer del sitio con opciones de colores, texto, imagen y CTA.
- * Version: 1.0.3
+ * Description: Plugin para inyectar un banner personalizable en el footer del sitio con opciones de colores, texto, imagen y CTA. Optimizado para imágenes 1080x1080px. Soporta [texto] para destacar palabras.
+ * Version: 1.2.0
  * Author: IMaaS Group
  * Author URI: https://imaasgroup.com
  * License: GPL v2 or later
@@ -26,7 +26,7 @@ class Voseda_Footer_Banner {
     /**
      * Versión del plugin
      */
-    const VERSION = '1.0.3';
+    const VERSION = '1.2.0';
 
     /**
      * Instancia única del plugin (Singleton)

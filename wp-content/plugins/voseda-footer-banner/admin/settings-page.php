@@ -89,8 +89,23 @@ $display_delay = get_option(Voseda_Footer_Banner::OPTION_PREFIX . 'display_delay
         Configura el banner que se mostrará en el footer de todas las páginas del sitio.
         Este banner incluye texto personalizado, un botón de llamada a la acción y una imagen flotante que aparece al pasar el mouse.
     </p>
-    <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 15px; margin: 15px 0;">
-        <strong>✨ Nueva funcionalidad:</strong> Al pasar el mouse sobre el banner, se mostrará una imagen flotante del evento (900x300px recomendado).
+
+    <!-- Banner destacado con dimensiones correctas -->
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8px; padding: 20px 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <h3 style="margin: 0 0 15px 0; color: white; font-size: 18px;">📱 Usa imágenes de Instagram/Facebook directamente</h3>
+        <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+            <p style="margin: 0 0 10px 0; font-size: 16px; font-weight: 600;">
+                🎯 DIMENSIONES CORRECTAS: <span style="background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 4px; font-size: 20px;">1080 x 1080 píxeles</span>
+            </p>
+            <p style="margin: 0; font-size: 14px; opacity: 0.95;">
+                ✨ Formato cuadrado ideal para redes sociales<br>
+                📱 Optimizado para iPhone 15 Pro Max<br>
+                🖼️ Se ajusta automáticamente con object-fit: cover
+            </p>
+        </div>
+        <p style="margin: 0; font-size: 13px; opacity: 0.9;">
+            💡 <strong>Tip:</strong> La misma imagen que subes a Instagram funciona perfectamente aquí. Comprime en <a href="https://tinypng.com" target="_blank" style="color: #ffd700; text-decoration: underline;">TinyPNG</a> antes de subir.
+        </p>
     </div>
 
     <form method="post" action="">
@@ -307,6 +322,10 @@ $display_delay = get_option(Voseda_Footer_Banner::OPTION_PREFIX . 'display_delay
                             class="large-text"
                         ><?php echo esc_textarea($main_text); ?></textarea>
                         <p class="description">
+                            <strong>💡 Tip:</strong> Usa <code>[texto]</code> para resaltar palabras importantes (ej: "Evento el <code>[15 de Marzo]</code>").
+                            El texto entre corchetes se mostrará con <strong>font-weight: 600</strong> y <strong>1.05x más grande</strong>.
+                        </p>
+                        <p class="description">
                             Texto que se mostrará en el banner. Puedes usar múltiples líneas.
                         </p>
                     </td>
@@ -379,9 +398,11 @@ $display_delay = get_option(Voseda_Footer_Banner::OPTION_PREFIX . 'display_delay
                         </button>
                         <p class="description">
                             <strong>Imagen flotante del evento que aparece al pasar el mouse sobre el banner.</strong><br>
-                            📐 <strong>Dimensiones recomendadas:</strong> Ancho mínimo <strong>900px</strong> / Alto mínimo <strong>300px</strong><br>
-                            💡 Esta imagen se mostrará automáticamente arriba del banner cuando el usuario pase el mouse.<br>
-                            Si no seleccionas ninguna imagen, se mostrará un cuadro gris placeholder al hacer hover.
+                            📐 <strong>Dimensiones recomendadas:</strong> <strong>1080x1080px</strong> (formato cuadrado ideal para redes sociales)<br>
+                            📱 <strong>Compatible con:</strong> Desktop, tablet, iPhone 15 Pro Max y todos los móviles modernos<br>
+                            💡 La imagen se ajusta automáticamente con <code>object-fit: cover</code> para verse perfecta en cualquier pantalla.<br>
+                            ✨ Esta imagen se mostrará automáticamente arriba del banner cuando el usuario pase el mouse.<br>
+                            <small>Si no seleccionas ninguna imagen, se mostrará un cuadro gris placeholder al hacer hover.</small>
                         </p>
                         <div id="voseda_fb_image_preview" style="margin-top: 10px;">
                             <?php if ($bg_image): ?>

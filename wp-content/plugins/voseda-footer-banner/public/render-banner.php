@@ -12,6 +12,24 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Procesar texto para convertir [texto] en <span class="highlight">texto</span>
+ *
+ * @param string $text Texto a procesar
+ * @return string Texto procesado con HTML
+ */
+function voseda_fb_process_highlight_text($text) {
+    // Convertir [texto] en <span class="voseda-highlight">texto</span>
+    // Usamos preg_replace para buscar cualquier texto entre corchetes
+    $processed = preg_replace(
+        '/\[([^\]]+)\]/',
+        '<span class="voseda-highlight">$1</span>',
+        $text
+    );
+
+    return $processed;
+}
+
+/**
  * Función para renderizar el banner en el footer
  *
  * @param array $options Array con todas las opciones del banner
@@ -80,7 +98,16 @@ function voseda_fb_render_banner($options) {
             <div class="voseda-banner-inner">
                 <?php if (!empty($main_text)): ?>
                     <div class="voseda-banner-text">
-                        <?php echo nl2br(esc_html($main_text)); ?>
+                        <?php
+                        // Procesar el texto para convertir [texto] en spans destacados
+                        $processed_text = voseda_fb_process_highlight_text($main_text);
+                        // Usamos wp_kses para permitir solo spans con clase voseda-highlight
+                        echo nl2br(wp_kses($processed_text, array(
+                            'span' => array(
+                                'class' => array()
+                            )
+                        )));
+                        ?>
                     </div>
                 <?php endif; ?>
 

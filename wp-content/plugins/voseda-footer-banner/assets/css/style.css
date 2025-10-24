@@ -37,7 +37,7 @@
 }
 
 /* ========================================
-   Imagen Flotante en Hover
+   Imagen Flotante en Hover (Optimizado para 1080x1080)
    ======================================== */
 
 .voseda-banner-hover-image {
@@ -45,12 +45,15 @@
     bottom: 100%; /* Posicionar justo arriba del banner */
     left: 0;
     width: 100%;
-    height: 300px;
+    height: 400px; /* Aumentado para mejor visualización */
     margin-bottom: 12px; /* Espacio entre imagen y banner */
     border-radius: 1.25rem;
+
+    /* Usar background-size: cover para imágenes 1080x1080 */
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
+
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),
                 0 4px 12px rgba(0, 0, 0, 0.15);
 
@@ -64,6 +67,10 @@
 
     /* Z-index para aparecer sobre todo */
     z-index: 10000;
+
+    /* Mejorar rendering de imágenes */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 /* Placeholder gris cuando no hay imagen */
@@ -139,6 +146,18 @@
     color: rgb(26, 26, 26);
     text-shadow: none;
     text-align: left;
+}
+
+/* Texto destacado con [texto] */
+.voseda-banner-text .voseda-highlight {
+    font-weight: 600;
+    font-size: 1.05em;
+    color: inherit;
+    /* Opcional: agregar color o fondo destacado */
+    /* background: linear-gradient(135deg, rgb(23, 152, 58), rgb(125, 184, 27)); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    /* background-clip: text; */
 }
 
 /* Botón CTA ocupa segunda columna */
@@ -258,6 +277,11 @@
         width: 100%;
         max-width: 100%;
     }
+
+    /* Imagen hover más pequeña en tablet */
+    .voseda-banner-hover-image {
+        height: 350px;
+    }
 }
 
 /* Móviles */
@@ -283,6 +307,73 @@
     .voseda-banner-button {
         padding: 12px 20px;
         font-size: 14px;
+    }
+
+    /* Imagen hover optimizada para móviles (1080x1080 se ve perfecta en vertical) */
+    .voseda-banner-hover-image {
+        height: 300px;
+        border-radius: 0.875rem;
+    }
+}
+
+/* iPhone 15 Pro Max y dispositivos similares (430px width) */
+@media (max-width: 430px) and (min-height: 900px) {
+    .voseda-footer-banner {
+        bottom: 16px; /* Un poco más alto para evitar gesture bar */
+        left: 16px;
+        right: 16px;
+        max-width: calc(100% - 32px);
+        padding: 18px 22px;
+        border-radius: 1rem;
+    }
+
+    .voseda-banner-text {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .voseda-banner-button {
+        padding: 14px 24px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    /* Imagen cuadrada perfecta para iPhone 15 Pro Max */
+    .voseda-banner-hover-image {
+        height: 340px; /* Optimizado para pantalla de 430px */
+        margin-bottom: 16px;
+        border-radius: 1rem;
+        /* Imagen 1080x1080 se verá perfecta con cover */
+    }
+}
+
+/* iPhone 15 Pro / 14 Pro y similares (393px width) */
+@media (max-width: 393px) and (min-height: 850px) {
+    .voseda-banner-hover-image {
+        height: 320px;
+    }
+}
+
+/* Dispositivos pequeños (iPhone SE, etc) */
+@media (max-width: 375px) {
+    .voseda-footer-banner {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        padding: 14px 18px;
+    }
+
+    .voseda-banner-text {
+        font-size: 14px;
+    }
+
+    .voseda-banner-button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .voseda-banner-hover-image {
+        height: 280px;
     }
 }
 

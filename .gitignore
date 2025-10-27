@@ -61,9 +61,12 @@ $RECYCLE.BIN/
 *.bak
 *.backup
 *.sql
-*.zip
+*.sql.gz
 *.tar.gz
-backups/
+backups/*
+!backups/README.md
+!backups/restaurar-db.sh
+!backups/.gitkeep
 
 # Claude
 .claude/state/

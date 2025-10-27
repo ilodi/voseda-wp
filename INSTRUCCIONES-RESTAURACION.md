@@ -4,7 +4,7 @@ Este documento contiene las instrucciones para restaurar tu sitio WordPress desp
 
 ## Estado Actual
 
-Fecha de respaldo: 27 de octubre de 2025 - 13:06
+Fecha de respaldo: 27 de octubre de 2025 - 13:25
 
 ### Repositorio Git
 - **URL del repositorio**: https://github.com/ilodi/voseda-wp.git
@@ -15,11 +15,21 @@ Fecha de respaldo: 27 de octubre de 2025 - 13:06
 
 Los siguientes archivos se encuentran en la carpeta `backups/`:
 
-1. **Base de datos**: `voseda_db_backup_20251027_130636.sql` (954 KB)
-2. **Plugin de footer**:
+1. **Base de datos** (RECOMENDADO):
+   - `voseda_complete_backup_20251027_132556.sql.gz` (233 KB comprimido) ⭐
+   - `voseda_complete_backup_20251027_132556.sql` (933 KB sin comprimir)
+   - Incluye: tablas, triggers, routines, events
+
+2. **Script de restauración automática**:
+   - `restaurar-db.sh` - Script para restaurar la base de datos fácilmente
+
+3. **Plugin de footer**:
    - Carpeta completa: `backups/voseda-footer-banner/`
    - Archivo ZIP: `backups/voseda-footer-banner-v1.2.0.zip`
-3. **Must-use plugins**: `backups/mu-plugins/`
+
+4. **Must-use plugins**: `backups/mu-plugins/`
+
+5. **Documentación**: `backups/README.md` - Guía detallada de los respaldos
 
 ## Pasos para Restaurar
 
@@ -59,14 +69,31 @@ Espera a que los contenedores estén en estado "healthy" (puede tomar 1-2 minuto
 
 ### 4. Restaurar la Base de Datos
 
-Si necesitas restaurar la base de datos desde el respaldo:
+#### Opción A: Restauración Automática (RECOMENDADA) ⭐
+
+Usa el script de restauración que hace todo por ti:
 
 ```bash
-# Opción 1: Desde la carpeta backups (si la tienes)
-docker exec -i voseda_db mysql -u wordpress -pwordpress wordpress < backups/voseda_db_backup_20251027_130636.sql
+cd backups
+./restaurar-db.sh
+```
 
-# Opción 2: Si tienes el archivo en otro lugar
-docker exec -i voseda_db mysql -u wordpress -pwordpress wordpress < /ruta/a/tu/backup.sql
+El script automáticamente:
+- Verifica que Docker está corriendo
+- Encuentra el respaldo más reciente
+- Descomprime y restaura la base de datos
+- Te muestra las URLs de acceso
+
+#### Opción B: Restauración Manual
+
+Si prefieres hacerlo manualmente:
+
+```bash
+# Desde archivo comprimido (más rápido de transferir)
+gunzip -c backups/voseda_complete_backup_20251027_132556.sql.gz | docker exec -i voseda_db mysql -u wordpress -pwordpress wordpress
+
+# O desde archivo SQL sin comprimir
+docker exec -i voseda_db mysql -u wordpress -pwordpress wordpress < backups/voseda_complete_backup_20251027_132556.sql
 ```
 
 ### 5. Verificar el Plugin de Footer

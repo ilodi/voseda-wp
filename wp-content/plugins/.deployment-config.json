@@ -1,0 +1,55 @@
+{
+  "project": "Voseda Production",
+  "version": "1.0.0",
+  "forklift": {
+    "local_path": "/Users/lodi/Documents/imaas/sites/voseda/wp-content",
+    "remote_host": "voseda.com",
+    "remote_path": "/public_html/wp-content",
+    "protocol": "SFTP",
+    "sync_rules": {
+      "plugins": {
+        "description": "Sincronizar plugins personalizados",
+        "folders": [
+          "voseda-footer-banner"
+        ],
+        "exclude": [
+          "*.zip",
+          "*.git*",
+          ".DS_Store",
+          "node_modules",
+          ".deployment-config.json"
+        ]
+      },
+      "mu-plugins": {
+        "description": "Must-Use Plugins (auto-carga)",
+        "folders": ["mu-plugins"],
+        "critical": true
+      },
+      "themes": {
+        "description": "Tema personalizado Voseda",
+        "folders": ["themes/voseda"],
+        "exclude": [
+          "*.zip",
+          "*.git*",
+          ".DS_Store",
+          "node_modules",
+          "*.scss",
+          "*.map"
+        ]
+      }
+    }
+  },
+  "deployment_checklist": [
+    "1. Hacer backup de la base de datos en Hostgator",
+    "2. Sincronizar mu-plugins primero (para auto-activación)",
+    "3. Sincronizar plugins personalizados",
+    "4. Sincronizar tema si aplica",
+    "5. Verificar en https://voseda.com que todo funcione",
+    "6. Limpiar caché de WordPress si existe"
+  ],
+  "notes": {
+    "mu-plugins": "Los mu-plugins se cargan automáticamente, no requieren activación",
+    "auto-activator": "El archivo voseda-auto-activator.php activa automáticamente los plugins necesarios",
+    "hostgator": "Credenciales SFTP disponibles en cPanel de Hostgator"
+  }
+}
